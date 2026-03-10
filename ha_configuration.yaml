@@ -1,0 +1,207 @@
+# =============================================================================
+# Home Assistant – LaMetric AI Icon Selector configuration snippets
+# =============================================================================
+# Copy the relevant sections into your HA configuration files.
+# Requires lametric_ai_selector.py to be installed on the same host.
+#
+# Two integration strategies are documented here:
+#   A) AppDaemon app  (recommended – full Python, no polling)
+#   B) shell_command  (simpler – runs the standalone CLI script)
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# A) AppDaemon configuration
+# -----------------------------------------------------------------------------
+# File: <config>/appdaemon/apps/lametric_ai_selector.yaml
+# Place lametric_ai_selector.py in <config>/appdaemon/apps/
+#
+# The app registers the service domain "lametric_ai" with the service
+# "notify".  Call it from any HA script / automation like a normal notify
+# service but without specifying an icon – AI handles that for you.
+# -----------------------------------------------------------------------------
+
+lametric_ai_selector:
+  module: lametric_ai_selector        # filename without .py
+  class: LaMetricAISelector
+  anthropic_api_key: !secret anthropic_api_key   # add to secrets.yaml
+  lametric_entity: notify.lametric_time          # your LaMetric notify entity
+  default_icon: 2                                # fallback icon if AI fails
+  icon_lifetime_ms: 5000                         # ms the message stays on screen
+
+
+# -----------------------------------------------------------------------------
+# B) shell_command  (add to configuration.yaml)
+# -----------------------------------------------------------------------------
+# Calls the standalone CLI and sends the notification in one shot.
+# Ensure the script is executable and its virtualenv is activated (or use
+# the full path to the Python interpreter that has the deps installed).
+# -----------------------------------------------------------------------------
+
+shell_command:
+  lametric_ai_notify: >-
+    python3 /config/scripts/lametric_ai_selector.py
+    --message "{{ message }}"
+    --title "{{ title | default('') }}"
+    --ha-url "http://localhost:8123"
+    --ha-token "{{ states('input_text.ha_long_lived_token') }}"
+    --notify-service "notify.lametric_time"
+    --lifetime-ms "{{ lifetime_ms | default(5000) }}"
+
+
+# -----------------------------------------------------------------------------
+# HA Script – "lametric_ai_notify" (AppDaemon variant)
+# -----------------------------------------------------------------------------
+# Paste into scripts.yaml or add via the UI (Scripts editor → YAML mode).
+# Calls the AppDaemon-registered service.
+# -----------------------------------------------------------------------------
+
+lametric_ai_notify:
+  alias: "LaMetric AI Notify"
+  description: >
+    Display a message on the LaMetric Time display with an AI-selected icon.
+  fields:
+    message:
+      description: The text to display on the LaMetric
+      example: "Washing machine finished"
+      required: true
+      selector:
+        text:
+    title:
+      description: Optional title prefix for icon context
+      example: "Appliance"
+      required: false
+      selector:
+        text:
+    lifetime_ms:
+      description: How long (ms) the message stays on screen
+      example: 5000
+      default: 5000
+      required: false
+      selector:
+        number:
+          min: 1000
+          max: 60000
+          step: 1000
+  sequence:
+    - service: lametric_ai/notify
+      data:
+        message: "{{ message }}"
+        title: "{{ title | default('') }}"
+        lifetime_ms: "{{ lifetime_ms | default(5000) }}"
+
+
+# -----------------------------------------------------------------------------
+# HA Script – shell_command variant (no AppDaemon required)
+# -----------------------------------------------------------------------------
+
+lametric_ai_notify_shell:
+  alias: "LaMetric AI Notify (shell)"
+  description: >
+    Display a message on LaMetric Time using the standalone Python CLI.
+  fields:
+    message:
+      description: The text to display
+      required: true
+      selector:
+        text:
+    title:
+      description: Optional title for better icon matching
+      required: false
+      selector:
+        text:
+  sequence:
+    - service: shell_command.lametric_ai_notify
+      data:
+        message: "{{ message }}"
+        title: "{{ title | default('') }}"
+
+
+# -----------------------------------------------------------------------------
+# Example automations
+# -----------------------------------------------------------------------------
+
+automation:
+  # ── Washing machine done ──────────────────────────────────────────────────
+  - alias: "LaMetric – Washing machine done"
+    trigger:
+      - platform: state
+        entity_id: sensor.washing_machine_status
+        to: "idle"
+        for: "00:02:00"
+    action:
+      - service: script.lametric_ai_notify
+        data:
+          message: "Washing machine is done!"
+          title: "Laundry"
+
+  # ── Front door opened ─────────────────────────────────────────────────────
+  - alias: "LaMetric – Front door opened"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_door
+        to: "on"
+    action:
+      - service: script.lametric_ai_notify
+        data:
+          message: "Front door has been opened"
+          title: "Security"
+
+  # ── Weather alert ─────────────────────────────────────────────────────────
+  - alias: "LaMetric – Rain expected"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.precipitation_forecast
+        above: 0
+    action:
+      - service: script.lametric_ai_notify
+        data:
+          message: "Rain expected this afternoon – remember your umbrella!"
+          title: "Weather"
+          lifetime_ms: 8000
+
+  # ── Low battery device ────────────────────────────────────────────────────
+  - alias: "LaMetric – Low battery"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.motion_sensor_battery
+        below: 15
+    action:
+      - service: script.lametric_ai_notify
+        data:
+          message: >-
+            Motion sensor battery at
+            {{ states('sensor.motion_sensor_battery') }}% – needs charging
+          title: "Battery"
+
+  # ── Package delivery ──────────────────────────────────────────────────────
+  - alias: "LaMetric – Package delivered"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.mailbox_sensor
+        to: "on"
+    action:
+      - service: script.lametric_ai_notify
+        data:
+          message: "A package has been delivered to the mailbox"
+          title: "Delivery"
+
+  # ── Good morning briefing ─────────────────────────────────────────────────
+  - alias: "LaMetric – Good morning"
+    trigger:
+      - platform: time
+        at: "07:00:00"
+    action:
+      - service: script.lametric_ai_notify
+        data:
+          message: >-
+            Good morning! Today is {{ now().strftime('%A') }},
+            {{ states('sensor.outdoor_temperature') }}°C outside.
+          title: "Morning"
+          lifetime_ms: 10000
+
+
+# -----------------------------------------------------------------------------
+# secrets.yaml  (add this entry)
+# -----------------------------------------------------------------------------
+# anthropic_api_key: sk-ant-your-key-here
