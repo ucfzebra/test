@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Montego Customs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body data-page="checkout">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" stroke="#e8842c" stroke-width="2" fill="none"/>
+        <path d="M12 27V14l8 9 8-9v13" stroke="#e8e4dc" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-word">Montego<small>Customs</small></span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?cat=b2b">Business</a>
+      <a href="shop.html?cat=events">Events</a>
+      <a href="shop.html?cat=geek">Geek Vault</a>
+      <a href="quote.html">Custom Quotes</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker">Checkout, Step 2 of 2</span>
+    <h1>Secure Checkout</h1>
+    <p>Shipping, billing, done. Custom artwork proofs follow by email before production begins.</p>
+  </div>
+</section>
+
+<main id="checkout-mount">
+  <div class="cart-layout wrap" style="padding-top:48px;">
+    <form id="checkout-form" novalidate>
+      <fieldset class="panel">
+        <legend>Contact</legend>
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Full Name</label><input id="f-name" name="name" autocomplete="name"><span class="err">Required</span></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"><span class="err">Valid email required</span></div>
+          <div class="field full"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"><span class="err">Required</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="panel">
+        <legend>Shipping Address</legend>
+        <div class="form-grid">
+          <div class="field full"><label for="f-addr">Street Address</label><input id="f-addr" name="address" autocomplete="street-address"><span class="err">Required</span></div>
+          <div class="field"><label for="f-city">City</label><input id="f-city" name="city" autocomplete="address-level2"><span class="err">Required</span></div>
+          <div class="field"><label for="f-state">State / Province</label><input id="f-state" name="state" autocomplete="address-level1"><span class="err">Required</span></div>
+          <div class="field"><label for="f-zip">ZIP / Postal Code</label><input id="f-zip" name="zip" autocomplete="postal-code"><span class="err">Required</span></div>
+          <div class="field"><label for="f-country">Country</label>
+            <select id="f-country" name="country" autocomplete="country-name">
+              <option>United States</option><option>Canada</option><option>United Kingdom</option><option>Australia</option>
+            </select><span class="err">Required</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="panel">
+        <legend>Payment</legend>
+        <div class="form-grid">
+          <div class="field full"><label for="f-cardname">Name on Card</label><input id="f-cardname" name="cardName" autocomplete="cc-name"><span class="err">Required</span></div>
+          <div class="field full"><label for="f-cardno">Card Number</label><input id="f-cardno" name="cardNumber" inputmode="numeric" placeholder="0000 0000 0000 0000" autocomplete="cc-number"><span class="err">Enter a valid card number</span></div>
+          <div class="field"><label for="f-exp">Expiry (MM/YY)</label><input id="f-exp" name="cardExp" inputmode="numeric" placeholder="MM/YY" autocomplete="cc-exp"><span class="err">Use MM/YY</span></div>
+          <div class="field"><label for="f-cvc">CVC</label><input id="f-cvc" name="cardCvc" inputmode="numeric" placeholder="123" autocomplete="cc-csc"><span class="err">3–4 digits</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="panel">
+        <legend>Engraving Notes</legend>
+        <div class="field">
+          <label for="f-notes">Names, dates, initials, or special instructions (optional)</label>
+          <textarea id="f-notes" name="notes" placeholder="e.g. Whiskey set monograms: JTR, MKD, ALS, BWC — wedding date 10/17/2026"></textarea>
+        </div>
+      </fieldset>
+
+      <button class="btn block" type="submit">Place Order</button>
+    </form>
+
+    <aside class="summary" id="checkout-summary"></aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-base" style="border:none; padding:0;">
+      <span>© 2026 Montego Customs. All rights reserved.</span>
+      <span>Demo storefront — no payment is processed.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0%" stop-color="#23272e"/><stop offset="100%" stop-color="#0d0f12"/>
+    </radialGradient>
+    <linearGradient id="birch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e7cda3"/><stop offset="100%" stop-color="#cdab78"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="505" rx="290" ry="26" fill="#000" opacity=".45"/>
+  <!-- kraft envelope behind -->
+  <g transform="translate(490 330) rotate(7)">
+    <rect x="-150" y="-95" width="300" height="190" rx="6" fill="#8a6f4d"/>
+    <path d="M-150 -95 L0 15 L150 -95" fill="none" stroke="#6e5739" stroke-width="3"/>
+  </g>
+  <!-- arch magnet -->
+  <g transform="translate(330 290) rotate(-5)">
+    <path d="M-130 170 L-130 -40 Q-130 -170 0 -170 Q130 -170 130 -40 L130 170 Z" fill="#0a0c0f" opacity=".55" transform="translate(8 10)"/>
+    <path d="M-130 170 L-130 -40 Q-130 -170 0 -170 Q130 -170 130 -40 L130 170 Z" fill="url(#birch)"/>
+    <g stroke="#b08e58" stroke-width="1.4" opacity=".55" fill="none">
+      <path d="M-130 -20 Q0 -30 130 -18"/><path d="M-130 60 Q0 52 130 62"/><path d="M-130 120 Q0 112 130 122"/>
+    </g>
+    <g fill="#5a3c1b" text-anchor="middle">
+      <text y="-104" font-family="Georgia" font-size="15" letter-spacing="5">SAVE THE DATE</text>
+      <text y="-44" font-family="Georgia" font-style="italic" font-size="40">Maya</text>
+      <text y="-8" font-family="Georgia" font-style="italic" font-size="24">&amp;</text>
+      <text y="36" font-family="Georgia" font-style="italic" font-size="40">Dre</text>
+      <text y="86" font-family="Georgia" font-size="20" letter-spacing="2">06 . 12 . 27</text>
+      <text y="120" font-family="Georgia" font-size="14" letter-spacing="3">SAVANNAH, GA</text>
+    </g>
+    <g stroke="#5a3c1b" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M-70 -78 q35 -12 70 -9 q35 -3 70 9"/>
+      <path d="M-58 100 h36 M22 100 h36"/>
+    </g>
+  </g>
+  <text x="400" y="565" text-anchor="middle" fill="#5a6270" font-family="Arial" font-size="14" letter-spacing="4">SAVE-THE-DATE WOOD MAGNETS · 50</text>
+</svg>
