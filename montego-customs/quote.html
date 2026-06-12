@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Quotes &amp; Special Requests — Montego Customs</title>
+<meta name="description" content="Request a custom laser engraving quote from Montego Customs — bulk corporate orders, wedding parties, one-off pieces, and original commissions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body data-page="quote">
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" stroke="#e8842c" stroke-width="2" fill="none"/>
+        <path d="M12 27V14l8 9 8-9v13" stroke="#e8e4dc" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-word">Montego<small>Customs</small></span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?cat=b2b">Business</a>
+      <a href="shop.html?cat=events">Events</a>
+      <a href="shop.html?cat=geek">Geek Vault</a>
+      <a href="quote.html" class="active">Custom Quotes</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker">Special Requests</span>
+    <h1>Custom Quotes</h1>
+    <p>If it fits on the laser bed, we'll quote it. Most quotes go out within one business day.</p>
+  </div>
+</section>
+
+<main>
+  <div class="quote-layout wrap">
+    <aside class="quote-side">
+      <span class="kicker">What We Take On</span>
+      <h2>One-offs to Five Hundred</h2>
+      <p>Corporate runs, wedding parties, reunion classes, commissioned art — and the weird, wonderful one-off ideas that don't fit a category. Tell us what you're picturing; we'll tell you what it takes.</p>
+      <ul>
+        <li>Bulk &amp; B2B pricing from 10 units — the bigger the run, the better the rate</li>
+        <li>Materials: hardwood, stainless &amp; anodized metals, slate, glass, leather, acrylic</li>
+        <li>Vector art preferred (SVG, AI, PDF) — or our studio can redraw your design</li>
+        <li>Digital proof on every job before anything is engraved</li>
+        <li>Typical turnaround 3–5 business days; rush available</li>
+      </ul>
+    </aside>
+
+    <div>
+      <div id="quote-thanks" style="display:none;" class="confirm" >
+        <div class="ok-ring">✓</div>
+        <h1 style="font-size:1.6rem;">Request Received</h1>
+        <p>Thanks — your request is in the studio queue. Expect a quote (or a few clarifying questions) within one business day.</p>
+        <p style="margin-top:26px;"><a class="btn" href="shop.html">Browse the Shop Meanwhile</a></p>
+      </div>
+
+      <form id="quote-form" novalidate>
+        <fieldset class="panel">
+          <legend>About You</legend>
+          <div class="form-grid">
+            <div class="field" data-required><label for="q-name">Name</label><input id="q-name" name="name" autocomplete="name"><span class="err">Required</span></div>
+            <div class="field" data-required><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"><span class="err">Valid email required</span></div>
+            <div class="field"><label for="q-company">Company / Organization (optional)</label><input id="q-company" name="company" autocomplete="organization"></div>
+            <div class="field"><label for="q-phone">Phone (optional)</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="panel">
+          <legend>The Project</legend>
+          <div class="form-grid">
+            <div class="field" data-required>
+              <label for="q-type">Project Type</label>
+              <select id="q-type" name="type">
+                <option value="">Select…</option>
+                <option>B2B / Corporate Branding</option>
+                <option>Wedding / Wedding Party</option>
+                <option>Bachelor / Bachelorette Party</option>
+                <option>Class Reunion / Large Group</option>
+                <option>Geek &amp; Pop-Culture Commission</option>
+                <option>Signage</option>
+                <option>Something Else Entirely</option>
+              </select>
+              <span class="err">Required</span>
+            </div>
+            <div class="field" data-required>
+              <label for="q-qty">Estimated Quantity</label>
+              <select id="q-qty" name="qty">
+                <option value="">Select…</option>
+                <option>1 (one-off piece)</option>
+                <option>2–9</option>
+                <option>10–49</option>
+                <option>50–199</option>
+                <option>200+</option>
+              </select>
+              <span class="err">Required</span>
+            </div>
+            <div class="field">
+              <label for="q-material">Preferred Material</label>
+              <select id="q-material" name="material">
+                <option>No preference — advise me</option>
+                <option>Hardwood</option>
+                <option>Stainless / Anodized Metal</option>
+                <option>Slate / Stone</option>
+                <option>Glass</option>
+                <option>Leather / Leatherette</option>
+                <option>Acrylic</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="q-date">Needed By (optional)</label>
+              <input id="q-date" name="date" type="date">
+            </div>
+            <div class="field full" data-required>
+              <label for="q-details">Describe the Project</label>
+              <textarea id="q-details" name="details" placeholder="What is it, what should it say, sizes, artwork you have, anything else we should know…"></textarea>
+              <span class="err">Tell us a little about the project</span>
+            </div>
+            <div class="field full">
+              <label for="q-link">Link to Artwork / Inspiration (optional)</label>
+              <input id="q-link" name="link" type="url" placeholder="https://…">
+            </div>
+          </div>
+        </fieldset>
+
+        <button class="btn block" type="submit">Send Quote Request</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Montego Customs</h4>
+        <p>Precision laser engraving studio. Wood, steel, slate, glass, and leather — engraved to order, built to last.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=b2b">B2B &amp; Corporate</a></li>
+          <li><a href="shop.html?cat=events">Weddings &amp; Events</a></li>
+          <li><a href="shop.html?cat=geek">The Geek Vault</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="quote.html">Custom Quotes</a></li>
+          <li><a href="cart.html">Your Cart</a></li>
+          <li><a href="quote.html">Bulk &amp; B2B Orders</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:studio@montegocustoms.com">studio@montegocustoms.com</a></li>
+          <li><a href="tel:+15555550199">(555) 555-0199</a></li>
+          <li>Mon–Fri · 9a–6p</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Montego Customs. All rights reserved.</span>
+      <span>Fan-art pieces are original studio designs and are not affiliated with any franchise.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

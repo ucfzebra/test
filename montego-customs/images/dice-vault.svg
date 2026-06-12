@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0%" stop-color="#23272e"/><stop offset="100%" stop-color="#0d0f12"/>
+    </radialGradient>
+    <linearGradient id="walnut" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b4a2e"/><stop offset="55%" stop-color="#4f351e"/><stop offset="100%" stop-color="#46301c"/>
+    </linearGradient>
+    <linearGradient id="walnutLid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7d5836"/><stop offset="100%" stop-color="#5a3c22"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="488" rx="290" ry="32" fill="#000" opacity=".45"/>
+  <!-- box base -->
+  <g transform="translate(400 330)">
+    <path d="M-230 40 L0 130 L230 40 L230 110 L0 200 L-230 110 Z" fill="#3a2715"/>
+    <path d="M-230 40 L0 130 L230 40 L0 -50 Z" fill="url(#walnut)"/>
+  </g>
+  <!-- lid, tilted up showing the engraving -->
+  <g transform="translate(400 215) rotate(-9)">
+    <rect x="-215" y="-115" width="430" height="230" rx="12" fill="#0a0c0f" opacity=".5" transform="translate(8 10)"/>
+    <rect x="-215" y="-115" width="430" height="230" rx="12" fill="url(#walnutLid)"/>
+    <g stroke="#3d2a17" stroke-width="1.6" opacity=".6" fill="none">
+      <path d="M-215 -62 Q0 -70 215 -60"/><path d="M-215 6 Q0 -2 215 8"/><path d="M-215 72 Q0 64 215 74"/>
+    </g>
+    <!-- deep-engraved d20 with dragon coil -->
+    <g transform="translate(0 0)">
+      <!-- dragon body coiling -->
+      <path d="M-150 60 q-40 -70 20 -110 q50 -34 110 -16" fill="none" stroke="#2a1a0b" stroke-width="13" stroke-linecap="round"/>
+      <path d="M-150 60 q-40 -70 20 -110 q50 -34 110 -16" fill="none" stroke="#e8842c" stroke-width="3" opacity=".55"/>
+      <!-- spines -->
+      <g stroke="#2a1a0b" stroke-width="5" stroke-linecap="round">
+        <path d="M-158 30 l-16 -8"/><path d="M-150 -8 l-17 -5"/><path d="M-128 -42 l-14 -11"/><path d="M-92 -66 l-9 -15"/>
+      </g>
+      <!-- dragon head -->
+      <path d="M-20 -66 q26 -16 52 -4 l-10 8 16 7 -14 7 q-28 8 -44 -4 z" fill="#2a1a0b"/>
+      <circle cx="14" cy="-62" r="3" fill="#e8842c"/>
+      <!-- d20 -->
+      <g transform="translate(40 18)">
+        <polygon points="0,-78 68,-39 68,39 0,78 -68,39 -68,-39" fill="none" stroke="#2a1a0b" stroke-width="6"/>
+        <polygon points="0,-44 38,22 -38,22" fill="none" stroke="#2a1a0b" stroke-width="5"/>
+        <path d="M0 -78 L0 -44 M-68 -39 L-38 22 M68 -39 L38 22 M-68 39 L-38 22 M68 39 L38 22 M0 78 L-38 22 M0 78 L38 22" stroke="#2a1a0b" stroke-width="3.5"/>
+        <text y="12" text-anchor="middle" fill="#e8842c" font-family="Arial" font-weight="bold" font-size="30">20</text>
+      </g>
+      <!-- tail wrap over d20 corner -->
+      <path d="M108 60 q34 -10 26 -44" fill="none" stroke="#2a1a0b" stroke-width="10" stroke-linecap="round"/>
+    </g>
+    <text y="98" text-anchor="middle" fill="#2a1a0b" font-family="Georgia" font-style="italic" font-size="15" letter-spacing="2">roll with advantage</text>
+  </g>
+  <!-- dice spilling out -->
+  <g>
+    <polygon points="285,420 312,404 339,420 339,448 312,464 285,448" fill="#15181d" stroke="#e8842c" stroke-width="2.5"/>
+    <text x="312" y="442" text-anchor="middle" fill="#e8842c" font-family="Arial" font-weight="bold" font-size="18">20</text>
+    <rect x="470" y="416" width="44" height="44" rx="8" fill="#15181d" stroke="#e8842c" stroke-width="2.5" transform="rotate(12 492 438)"/>
+    <text x="492" y="446" text-anchor="middle" fill="#e8842c" font-family="Arial" font-weight="bold" font-size="17" transform="rotate(12 492 438)">6</text>
+  </g>
+  <text x="400" y="565" text-anchor="middle" fill="#5a6270" font-family="Arial" font-size="14" letter-spacing="4">DRAGON'S HOARD DICE VAULT</text>
+</svg>
